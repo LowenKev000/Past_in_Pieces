@@ -1261,7 +1261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RotateObject
   lookAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   rotateAmount: 15
-  stepInterval: 0.2
+  stepInterval: 0.25
 --- !u!65 &494258964
 BoxCollider:
   m_ObjectHideFlags: 0
