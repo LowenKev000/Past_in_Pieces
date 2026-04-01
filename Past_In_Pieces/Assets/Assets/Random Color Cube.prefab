@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1077718919182426030}
   - component: {fileID: 558941299981056392}
   m_Layer: 0
-  m_Name: Test Cube 3
+  m_Name: Random Color Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
