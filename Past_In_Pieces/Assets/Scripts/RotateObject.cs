@@ -1,53 +1,53 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class RotateObject : MonoBehaviour
 {
+    [Header("Input Actions")]
     public InputActionReference lookAction;
+    public InputActionReference clickAction;
 
-    public float rotateAmount = 15f;
-    public float stepInterval = 0.2f;
+    [Header("Settings")]
+    public float sensitivity = 0.2f;
 
-    private float timerX;
-    private float timerY;
+    [Header("Axis Locking")]
+    public bool lockX = false;
+    public bool lockY = false;
+    public bool lockZ = false;
 
-    void OnEnable()
+    private float currentXRotation = 0f;
+    private float currentYRotation = 0f;
+    private float currentZRotation = 0f;
+
+    private void OnEnable()
     {
         lookAction.action.Enable();
+        clickAction.action.Enable();
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         lookAction.action.Disable();
+        clickAction.action.Disable();
     }
 
     void Update()
     {
-        Vector2 input = lookAction.action.ReadValue<Vector2>();
+        if (!clickAction.action.IsPressed()) return;
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
 
-        timerX += Time.deltaTime;
-        timerY += Time.deltaTime;
+        Vector2 mouseDelta = lookAction.action.ReadValue<Vector2>();
 
-        if (input.x > 0f && timerY >= stepInterval)
-        {
-            transform.Rotate(Vector3.up, rotateAmount, Space.World);
-            timerY = 0f;
-        }
-        else if (input.x < 0f && timerY >= stepInterval)
-        {
-            transform.Rotate(Vector3.up, -rotateAmount, Space.World);
-            timerY = 0f;
-        }
+        if (!lockX)
+            currentXRotation -= mouseDelta.y * sensitivity;
 
-        if (input.y > 0f && timerX >= stepInterval)
-        {
-            transform.Rotate(Vector3.right, -rotateAmount, Space.World);
-            timerX = 0f;
-        }
-        else if (input.y < 0f && timerX >= stepInterval)
-        {
-            transform.Rotate(Vector3.right, rotateAmount, Space.World);
-            timerX = 0f;
-        }
+        if (!lockY)
+            currentYRotation += mouseDelta.x * sensitivity;
+
+        if (!lockZ)
+            currentZRotation += mouseDelta.x * sensitivity * 0.5f;
+
+        transform.rotation = Quaternion.Euler(currentXRotation, currentYRotation, currentZRotation);
     }
 }
