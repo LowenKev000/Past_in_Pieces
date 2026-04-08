@@ -25,15 +25,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Up",
-                    "type": "Button",
-                    "id": "e507bb8b-7583-4375-96e8-0e67eb30c968",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Down",
                     "type": "Button",
                     "id": "a6b113c5-0636-4104-9653-7d5581619d6f",
@@ -224,17 +215,6 @@
                     "processors": "",
                     "groups": "Joystick",
                     "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e81cd899-1eb6-4074-a8af-d370dd6d7a72",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Up",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
