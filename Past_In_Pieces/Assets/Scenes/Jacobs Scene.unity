@@ -3820,7 +3820,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1785718464149130776, guid: 6c4d0a0fec800ab4a8a6c15e85199135, type: 3}
+          m_ObjectArgument: {fileID: 1925122644061077040, guid: c5101b5774b87b247a4109564dc6237e, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4838,7 +4838,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494258962}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -9122,7 +9122,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1785718464149130776, guid: 147b866e47a61514a8772377edb720c7, type: 3}
+          m_ObjectArgument: {fileID: 1789303925448275607, guid: 5906cbb8c65f85d4ca23d687c742ab2b, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -16721,7 +16721,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1785718464149130776, guid: 025040e0951a6154bb736fd91a3e04d0, type: 3}
+          m_ObjectArgument: {fileID: 5949755047024312550, guid: 27031e5a616c76d4cab1da66da150a3b, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
