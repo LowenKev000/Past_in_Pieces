@@ -5,28 +5,55 @@ public class BuildingSystem : MonoBehaviour
 {
     public Camera cam;
     public LayerMask groundLayer;
+    public LayerMask buildingLayer;
 
     public bool useGrid = true;
     public float gridSize = 1f;
 
+    public float snapRadius = 3f;
+
     private GameObject currentBuilding;
+    private bool isMoving = false;
 
     void Update()
     {
-        if (currentBuilding == null) return;
-
-        FollowMouse();
-
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (currentBuilding == null)
         {
-            PlaceBuilding();
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                SelectBuilding();
+            }
+        }
+        else
+        {
+            MoveBuilding();
+
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                PlaceBuilding();
+            }
+
+            if (Mouse.current.rightButton.wasPressedThisFrame)
+            {
+                CancelPlacing();
+            }
         }
     }
 
-    void FollowMouse()
+    void SelectBuilding()
     {
         Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (Physics.Raycast(ray, out RaycastHit hit, 100f, buildingLayer))
+        {
+            currentBuilding = hit.collider.gameObject;
+            currentBuilding.layer = LayerMask.NameToLayer("Ignore Raycast");
+            isMoving = true;
+        }
+    }
 
+    void MoveBuilding()
+    {
+        Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit hit, 100f, groundLayer))
         {
             Vector3 pos = hit.point;
@@ -34,8 +61,29 @@ public class BuildingSystem : MonoBehaviour
             if (useGrid)
             {
                 pos.x = Mathf.Round(pos.x / gridSize) * gridSize;
-                pos.y = Mathf.Round(pos.y / gridSize) * gridSize;
                 pos.z = Mathf.Round(pos.z / gridSize) * gridSize;
+            }
+
+            GameObject[] snapPoints = GameObject.FindGameObjectsWithTag("SnapPoint");
+            Transform bestSnap = null;
+            float closestDist = Mathf.Infinity;
+
+            foreach (GameObject snap in snapPoints)
+            {
+                if (snap.transform.IsChildOf(currentBuilding.transform)) continue;
+
+                float dist = Vector3.Distance(pos, snap.transform.position);
+                if (dist < snapRadius && dist < closestDist)
+                {
+                    closestDist = dist;
+                    bestSnap = snap.transform;
+                }
+            }
+
+            if (bestSnap != null)
+            {
+                pos = bestSnap.position;
+                currentBuilding.transform.rotation = bestSnap.rotation;
             }
 
             currentBuilding.transform.position = pos;
@@ -44,7 +92,29 @@ public class BuildingSystem : MonoBehaviour
 
     void PlaceBuilding()
     {
+        currentBuilding.layer = Mathf.RoundToInt(Mathf.Log(buildingLayer.value, 2));
+        if (currentBuilding.GetComponent<Collider>() == null)
+        {
+            currentBuilding.AddComponent<BoxCollider>();
+        }
+
         currentBuilding = null;
+        isMoving = false;
+    }
+
+    void CancelPlacing()
+    {
+        if (isMoving)
+        {
+            currentBuilding.layer = Mathf.RoundToInt(Mathf.Log(buildingLayer.value, 2));
+        }
+        else
+        {
+            Destroy(currentBuilding);
+        }
+
+        currentBuilding = null;
+        isMoving = false;
     }
 
     public void StartPlacing(GameObject prefab)
@@ -55,5 +125,10 @@ public class BuildingSystem : MonoBehaviour
         }
 
         currentBuilding = Instantiate(prefab);
+        currentBuilding.layer = LayerMask.NameToLayer("Ignore Raycast");
+        isMoving = false;
+
+        if (currentBuilding.GetComponent<Collider>() == null)
+            currentBuilding.AddComponent<BoxCollider>();
     }
 }

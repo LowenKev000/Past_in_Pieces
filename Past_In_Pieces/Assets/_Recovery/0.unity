@@ -10942,7 +10942,7 @@ MonoBehaviour:
     m_Bits: 64
   useGrid: 0
   gridSize: 1
-  snapRadius: 2
+  snapRadius: 1.5
 --- !u!4 &1140176423
 Transform:
   m_ObjectHideFlags: 0
@@ -10952,7 +10952,7 @@ Transform:
   m_GameObject: {fileID: 1140176421}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.50081, y: -0, z: -3.50595}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
