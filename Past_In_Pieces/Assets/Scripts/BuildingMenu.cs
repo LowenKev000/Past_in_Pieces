@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildingMenu : MonoBehaviour
 {
     public GameObject[] buildingGrids;
+    public ScrollRect scrollRect;
 
     private int currentIndex = 0;
 
@@ -13,10 +15,7 @@ public class BuildingMenu : MonoBehaviour
 
     public void NextObject()
     {
-        currentIndex++;
-        if (currentIndex >= buildingGrids.Length)
-            currentIndex = 0;
-
+        currentIndex = (currentIndex + 1) % buildingGrids.Length;
         UpdateActiveObject();
     }
 
@@ -43,5 +42,8 @@ public class BuildingMenu : MonoBehaviour
         {
             buildingGrids[i].SetActive(i == currentIndex);
         }
+
+        scrollRect.content = buildingGrids[currentIndex].GetComponent<RectTransform>();
+        scrollRect.verticalNormalizedPosition = 1f;
     }
 }
