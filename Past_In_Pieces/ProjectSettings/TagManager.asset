@@ -4,7 +4,17 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - SnapPoint
+  - Parent
+  - Body
+  - Legs
+  - Legs Snap Point
+  - Undefined
+  - Arms
+  - Arms Snap Point
+  - Nose
+  - Nose Snap Point
+  - Tail
+  - Tail Snap Point
   layers:
   - Default
   - TransparentFX

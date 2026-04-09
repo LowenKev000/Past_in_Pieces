@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 971230074660658857}
   m_Layer: 0
-  m_Name: Legs Snapping Point
-  m_TagString: SnapPoint
+  m_Name: Legs Snap Point
+  m_TagString: Legs Snap Point
   m_Icon: {fileID: 2800000, guid: 79aba0b290c471c4ba3d3f818d4e9b15, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,8 +41,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4578995646422666763}
   m_Layer: 0
-  m_Name: Snout Snapping Point
-  m_TagString: SnapPoint
+  m_Name: Snout Snap Point
+  m_TagString: Nose Snap Point
   m_Icon: {fileID: 2800000, guid: 79aba0b290c471c4ba3d3f818d4e9b15, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,7 +84,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3a62e01175b32934189a96bc3c873b83, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3a62e01175b32934189a96bc3c873b83, type: 3}
       propertyPath: m_LocalRotation.x
@@ -96,11 +96,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3a62e01175b32934189a96bc3c873b83, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3a62e01175b32934189a96bc3c873b83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3a62e01175b32934189a96bc3c873b83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -113,6 +113,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3a62e01175b32934189a96bc3c873b83, type: 3}
       propertyPath: m_Name
       value: graysealbody
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3a62e01175b32934189a96bc3c873b83, type: 3}
+      propertyPath: m_TagString
+      value: Body
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

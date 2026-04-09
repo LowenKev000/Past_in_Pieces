@@ -1,16 +1,19 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class BuildingSystem : MonoBehaviour
 {
+    [System.Serializable]
+    public class TagSpawnRule
+    {
+        public string objectTag;
+        public string spawnPointTag;
+    }
+
     public Camera cam;
-    public LayerMask groundLayer;
-    public LayerMask buildingLayer;
-
-    public bool useGrid = true;
-    public float gridSize = 1f;
-
-    public float snapRadius = 3f;
+    public List<TagSpawnRule> spawnRules = new List<TagSpawnRule>();
+    public Transform buildingContainer;
 
     private GameObject currentBuilding;
     private bool isMoving = false;
@@ -20,30 +23,24 @@ public class BuildingSystem : MonoBehaviour
         if (currentBuilding == null)
         {
             if (Mouse.current.leftButton.wasPressedThisFrame)
-            {
                 SelectBuilding();
-            }
         }
         else
         {
-            MoveBuilding();
+            MoveToSpawnPoint();
 
             if (Mouse.current.leftButton.wasPressedThisFrame)
-            {
                 PlaceBuilding();
-            }
 
             if (Mouse.current.rightButton.wasPressedThisFrame)
-            {
                 CancelPlacing();
-            }
         }
     }
 
     void SelectBuilding()
     {
         Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f, buildingLayer))
+        if (Physics.Raycast(ray, out RaycastHit hit, 100f))
         {
             currentBuilding = hit.collider.gameObject;
             currentBuilding.layer = LayerMask.NameToLayer("Ignore Raycast");
@@ -51,52 +48,32 @@ public class BuildingSystem : MonoBehaviour
         }
     }
 
-    void MoveBuilding()
+    void MoveToSpawnPoint()
     {
-        Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f, groundLayer))
+        string spawnTag = GetSpawnPointTag(currentBuilding.tag);
+        if (spawnTag == null)
         {
-            Vector3 pos = hit.point;
-
-            if (useGrid)
-            {
-                pos.x = Mathf.Round(pos.x / gridSize) * gridSize;
-                pos.z = Mathf.Round(pos.z / gridSize) * gridSize;
-            }
-
-            GameObject[] snapPoints = GameObject.FindGameObjectsWithTag("SnapPoint");
-            Transform bestSnap = null;
-            float closestDist = Mathf.Infinity;
-
-            foreach (GameObject snap in snapPoints)
-            {
-                if (snap.transform.IsChildOf(currentBuilding.transform)) continue;
-
-                float dist = Vector3.Distance(pos, snap.transform.position);
-                if (dist < snapRadius && dist < closestDist)
-                {
-                    closestDist = dist;
-                    bestSnap = snap.transform;
-                }
-            }
-
-            if (bestSnap != null)
-            {
-                pos = bestSnap.position;
-                currentBuilding.transform.rotation = bestSnap.rotation;
-            }
-
-            currentBuilding.transform.position = pos;
+            Debug.LogWarning($"[BuildingSystem] No spawn rule found for object tag '{currentBuilding.tag}'.");
+            return;
         }
+
+        GameObject spawnPoint = FindObjectWithTagInChildren(spawnTag);
+        if (spawnPoint == null)
+        {
+            Debug.LogWarning($"[BuildingSystem] No object with tag '{spawnTag}' found in scene or children.");
+            return;
+        }
+
+        currentBuilding.transform.position = spawnPoint.transform.position;
     }
 
     void PlaceBuilding()
     {
-        currentBuilding.layer = Mathf.RoundToInt(Mathf.Log(buildingLayer.value, 2));
         if (currentBuilding.GetComponent<Collider>() == null)
-        {
             currentBuilding.AddComponent<BoxCollider>();
-        }
+
+        if (buildingContainer != null)
+            currentBuilding.transform.SetParent(buildingContainer, true);
 
         currentBuilding = null;
         isMoving = false;
@@ -104,14 +81,8 @@ public class BuildingSystem : MonoBehaviour
 
     void CancelPlacing()
     {
-        if (isMoving)
-        {
-            currentBuilding.layer = Mathf.RoundToInt(Mathf.Log(buildingLayer.value, 2));
-        }
-        else
-        {
+        if (!isMoving)
             Destroy(currentBuilding);
-        }
 
         currentBuilding = null;
         isMoving = false;
@@ -120,9 +91,7 @@ public class BuildingSystem : MonoBehaviour
     public void StartPlacing(GameObject prefab)
     {
         if (currentBuilding != null)
-        {
             Destroy(currentBuilding);
-        }
 
         currentBuilding = Instantiate(prefab);
         currentBuilding.layer = LayerMask.NameToLayer("Ignore Raycast");
@@ -130,5 +99,41 @@ public class BuildingSystem : MonoBehaviour
 
         if (currentBuilding.GetComponent<Collider>() == null)
             currentBuilding.AddComponent<BoxCollider>();
+    }
+
+    private string GetSpawnPointTag(string objectTag)
+    {
+        foreach (TagSpawnRule rule in spawnRules)
+        {
+            if (rule.objectTag == objectTag)
+                return rule.spawnPointTag;
+        }
+        return null;
+    }
+
+    private GameObject FindObjectWithTagInChildren(string tag)
+    {
+        foreach (GameObject root in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())
+        {
+            GameObject found = FindInChildrenRecursive(root.transform, tag);
+            if (found != null)
+                return found;
+        }
+        return null;
+    }
+
+    private GameObject FindInChildrenRecursive(Transform parent, string tag)
+    {
+        if (parent.CompareTag(tag))
+            return parent.gameObject;
+
+        foreach (Transform child in parent)
+        {
+            GameObject found = FindInChildrenRecursive(child, tag);
+            if (found != null)
+                return found;
+        }
+
+        return null;
     }
 }

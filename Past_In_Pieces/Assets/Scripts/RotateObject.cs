@@ -16,9 +16,20 @@ public class RotateObject : MonoBehaviour
     public bool lockY = false;
     public bool lockZ = false;
 
-    private float currentXRotation = 0f;
-    private float currentYRotation = 0f;
-    private float currentZRotation = 0f;
+    private float currentXRotation;
+    private float currentYRotation;
+    private float currentZRotation;
+
+    private Vector3 initialRotation;
+
+    private void Awake()
+    {
+        initialRotation = transform.rotation.eulerAngles;
+
+        currentXRotation = initialRotation.x;
+        currentYRotation = initialRotation.y;
+        currentZRotation = initialRotation.z;
+    }
 
     private void OnEnable()
     {
