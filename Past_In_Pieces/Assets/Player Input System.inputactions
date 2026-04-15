@@ -25,15 +25,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Down",
-                    "type": "Button",
-                    "id": "a6b113c5-0636-4104-9653-7d5581619d6f",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Right Click",
                     "type": "Button",
                     "id": "80053369-a346-4857-b9d6-a36355a57d1c",
@@ -215,17 +206,6 @@
                     "processors": "",
                     "groups": "Joystick",
                     "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f5f748e9-7c22-4c0b-ac5d-b6668f2955f0",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Down",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
