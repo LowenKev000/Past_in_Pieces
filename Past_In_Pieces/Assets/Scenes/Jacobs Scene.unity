@@ -699,8 +699,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '?'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e29621fb6f84469479f68e805f9b31d5, type: 2}
+  m_sharedMaterial: {fileID: 7422191670159435401, guid: e29621fb6f84469479f68e805f9b31d5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -17009,7 +17009,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82d801768aba0d4eab9e5c65a4cbd0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildingSystem
+  debugMode: 0
   cam: {fileID: 1847447389}
+  buildingContainer: {fileID: 1946908022}
   spawnRules:
   - objectTag: Body
     spawnPointTag: Parent
@@ -17017,7 +17019,6 @@ MonoBehaviour:
     spawnPointTag: Legs Snap Point
   - objectTag: Nose
     spawnPointTag: Nose Snap Point
-  buildingContainer: {fileID: 1946908022}
 --- !u!4 &1140176423
 Transform:
   m_ObjectHideFlags: 0
@@ -20666,19 +20667,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Submit
-
-'
+  m_text: Submit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e29621fb6f84469479f68e805f9b31d5, type: 2}
+  m_sharedMaterial: {fileID: 7422191670159435401, guid: e29621fb6f84469479f68e805f9b31d5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -23308,6 +23307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064a06e6a367f0d448391a0000ca6704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildingMenu
+  debugMode: 0
   buildingGrids:
   - {fileID: 1386998418}
   - {fileID: 1430145242}
@@ -31406,6 +31406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ae276669a975c4d9757968f9f85dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RotateObject
+  debugMode: 0
   lookAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   clickAction: {fileID: 3280008833414572417, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   sensitivity: 0.25

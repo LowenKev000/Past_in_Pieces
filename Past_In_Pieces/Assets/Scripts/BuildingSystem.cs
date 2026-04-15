@@ -1,51 +1,43 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class BuildingSystem : MonoBehaviour
 {
     [System.Serializable]
     public class TagSpawnRule
     {
+        [Tooltip("Tag of the building prefab that will be placed.")]
         public string objectTag;
+
+        [Tooltip("Tag of the spawn point this object should snap to.")]
         public string spawnPointTag;
     }
 
+    [Header("Debug")]
+    [Tooltip("Enable debug logs for placement system.")]
+    public bool debugMode = false;
+
+    [Header("References")]
+    [Tooltip("Optional camera reference.")]
     public Camera cam;
-    public List<TagSpawnRule> spawnRules = new List<TagSpawnRule>();
+
+    [Tooltip("Parent container for all placed buildings.")]
     public Transform buildingContainer;
+
+    [Header("Placement Rules")]
+    [Tooltip("Rules mapping object tags to spawn point tags.")]
+    public List<TagSpawnRule> spawnRules = new List<TagSpawnRule>();
 
     private GameObject currentBuilding;
     private bool isMoving = false;
 
     void Update()
     {
-        if (currentBuilding == null)
-        {
-            if (Mouse.current.leftButton.wasPressedThisFrame)
-                SelectBuilding();
-        }
-        else
-        {
-            MoveToSpawnPoint();
+        if (currentBuilding == null) return;
 
-            if (Mouse.current.leftButton.wasPressedThisFrame)
-                PlaceBuilding();
-
-            if (Mouse.current.rightButton.wasPressedThisFrame)
-                CancelPlacing();
-        }
-    }
-
-    void SelectBuilding()
-    {
-        Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f))
-        {
-            currentBuilding = hit.collider.gameObject;
-            currentBuilding.layer = LayerMask.NameToLayer("Ignore Raycast");
-            isMoving = true;
-        }
+        MoveToSpawnPoint();
     }
 
     void MoveToSpawnPoint()
@@ -53,36 +45,50 @@ public class BuildingSystem : MonoBehaviour
         string spawnTag = GetSpawnPointTag(currentBuilding.tag);
         if (spawnTag == null)
         {
-            Debug.LogWarning($"[BuildingSystem] No spawn rule found for object tag '{currentBuilding.tag}'.");
+            if (debugMode) Debug.LogWarning("Spawn tag not found for object tag: " + currentBuilding.tag);
             return;
         }
 
         GameObject spawnPoint = FindObjectWithTagInChildren(spawnTag);
         if (spawnPoint == null)
         {
-            Debug.LogWarning($"[BuildingSystem] No object with tag '{spawnTag}' found in scene or children.");
+            if (debugMode) Debug.LogWarning("Spawn point not found with tag: " + spawnTag);
             return;
         }
 
+        // Snap position to spawn point
         currentBuilding.transform.position = spawnPoint.transform.position;
+
+        // Align Y rotation only
+        Vector3 currentRot = currentBuilding.transform.eulerAngles;
+        float targetY = spawnPoint.transform.eulerAngles.y;
+
+        currentBuilding.transform.rotation = Quaternion.Euler(
+            currentRot.x,
+            targetY,
+            currentRot.z
+        );
+
+        if (debugMode)
+            Debug.Log("Snapped building: " + currentBuilding.name + " to " + spawnPoint.name);
+
+        FinalizePlacement();
     }
 
-    void PlaceBuilding()
+    void FinalizePlacement()
     {
+        RemoveExistingOfSameTag(currentBuilding.tag);
+
+        // Ensure collider exists
         if (currentBuilding.GetComponent<Collider>() == null)
             currentBuilding.AddComponent<BoxCollider>();
 
+        // Parent to container if assigned
         if (buildingContainer != null)
             currentBuilding.transform.SetParent(buildingContainer, true);
 
-        currentBuilding = null;
-        isMoving = false;
-    }
-
-    void CancelPlacing()
-    {
-        if (!isMoving)
-            Destroy(currentBuilding);
+        if (debugMode)
+            Debug.Log("Finalized placement: " + currentBuilding.name);
 
         currentBuilding = null;
         isMoving = false;
@@ -94,11 +100,32 @@ public class BuildingSystem : MonoBehaviour
             Destroy(currentBuilding);
 
         currentBuilding = Instantiate(prefab);
-        currentBuilding.layer = LayerMask.NameToLayer("Ignore Raycast");
-        isMoving = false;
 
+        // Ignore raycasts while placing
+        currentBuilding.layer = LayerMask.NameToLayer("Ignore Raycast");
+
+        isMoving = true;
+
+        // Ensure collider exists for placement logic
         if (currentBuilding.GetComponent<Collider>() == null)
             currentBuilding.AddComponent<BoxCollider>();
+
+        if (debugMode)
+            Debug.Log("Started placing: " + prefab.name);
+    }
+
+    void RemoveExistingOfSameTag(string tag)
+    {
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag(tag))
+        {
+            if (obj != currentBuilding)
+            {
+                if (debugMode)
+                    Debug.Log("Removing existing: " + obj.name);
+
+                Destroy(obj);
+            }
+        }
     }
 
     private string GetSpawnPointTag(string objectTag)
@@ -113,7 +140,7 @@ public class BuildingSystem : MonoBehaviour
 
     private GameObject FindObjectWithTagInChildren(string tag)
     {
-        foreach (GameObject root in UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects())
+        foreach (GameObject root in SceneManager.GetActiveScene().GetRootGameObjects())
         {
             GameObject found = FindInChildrenRecursive(root.transform, tag);
             if (found != null)

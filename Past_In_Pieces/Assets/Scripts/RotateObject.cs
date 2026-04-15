@@ -4,6 +4,10 @@ using UnityEngine.EventSystems;
 
 public class RotateObject : MonoBehaviour
 {
+    [Header("Debug")]
+    [Tooltip("Enable debug logs for rotation input and values.")]
+    public bool debugMode = false;
+
     [Header("Input Actions")]
     public InputActionReference lookAction;
     public InputActionReference clickAction;
@@ -29,26 +33,40 @@ public class RotateObject : MonoBehaviour
         currentXRotation = initialRotation.x;
         currentYRotation = initialRotation.y;
         currentZRotation = initialRotation.z;
+
+        if (debugMode)
+            Debug.Log($"[RotateObject] Initial Rotation: {initialRotation}");
     }
 
     private void OnEnable()
     {
         lookAction.action.Enable();
         clickAction.action.Enable();
+
+        if (debugMode)
+            Debug.Log("[RotateObject] Input actions enabled");
     }
 
     private void OnDisable()
     {
         lookAction.action.Disable();
         clickAction.action.Disable();
+
+        if (debugMode)
+            Debug.Log("[RotateObject] Input actions disabled");
     }
 
     void Update()
     {
         if (!clickAction.action.IsPressed()) return;
-        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
+
+        if (EventSystem.current != null &&
+            EventSystem.current.IsPointerOverGameObject()) return;
 
         Vector2 mouseDelta = lookAction.action.ReadValue<Vector2>();
+
+        if (debugMode)
+            Debug.Log($"[RotateObject] Mouse Delta: {mouseDelta}");
 
         if (!lockX)
             currentXRotation -= mouseDelta.y * sensitivity;
@@ -59,6 +77,13 @@ public class RotateObject : MonoBehaviour
         if (!lockZ)
             currentZRotation += mouseDelta.x * sensitivity * 0.5f;
 
-        transform.rotation = Quaternion.Euler(currentXRotation, currentYRotation, currentZRotation);
+        transform.rotation = Quaternion.Euler(
+            currentXRotation,
+            currentYRotation,
+            currentZRotation
+        );
+
+        if (debugMode)
+            Debug.Log($"[RotateObject] Rotation: {currentXRotation}, {currentYRotation}, {currentZRotation}");
     }
 }
