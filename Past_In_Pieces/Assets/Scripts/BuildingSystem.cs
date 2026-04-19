@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
@@ -8,142 +7,110 @@ public class BuildingSystem : MonoBehaviour
     [System.Serializable]
     public class TagSpawnRule
     {
-        [Tooltip("Tag of the building prefab that will be placed.")]
+        [Tooltip("Prefab tag to place.")]
         public string objectTag;
 
-        [Tooltip("Tag of the spawn point this object should snap to.")]
+        [Tooltip("Target spawn point tag.")]
         public string spawnPointTag;
     }
 
     [Header("Debug")]
-    [Tooltip("Enable debug logs for placement system.")]
     public bool debugMode = false;
 
     [Header("References")]
-    [Tooltip("Optional camera reference.")]
-    public Camera cam;
-
-    [Tooltip("Parent container for all placed buildings.")]
     public Transform buildingContainer;
 
     [Header("Placement Rules")]
-    [Tooltip("Rules mapping object tags to spawn point tags.")]
     public List<TagSpawnRule> spawnRules = new List<TagSpawnRule>();
 
-    private GameObject currentBuilding;
-    private bool isMoving = false;
-
-    void Update()
+    // Entry point for placing objects
+    public void StartPlacing(GameObject prefab)
     {
-        if (currentBuilding == null) return;
+        string objectTag = prefab.tag;
 
-        MoveToSpawnPoint();
-    }
-
-    void MoveToSpawnPoint()
-    {
-        string spawnTag = GetSpawnPointTag(currentBuilding.tag);
-        if (spawnTag == null)
+        // Get matching spawn rule
+        string spawnPointTag = GetSpawnPointTag(objectTag);
+        if (spawnPointTag == null)
         {
-            if (debugMode) Debug.LogWarning("Spawn tag not found for object tag: " + currentBuilding.tag);
+            if (debugMode)
+                Debug.LogWarning($"No spawn rule for tag '{objectTag}'.");
             return;
         }
 
-        GameObject spawnPoint = FindObjectWithTagInChildren(spawnTag);
+        GameObject spawnPoint = FindObjectWithTag(spawnPointTag);
         if (spawnPoint == null)
         {
-            if (debugMode) Debug.LogWarning("Spawn point not found with tag: " + spawnTag);
+            if (debugMode)
+                Debug.LogWarning($"No spawn point found for tag '{spawnPointTag}'.");
             return;
         }
 
-        // Snap position to spawn point
-        currentBuilding.transform.position = spawnPoint.transform.position;
+        // Special case: "Body" clears all managed objects
+        if (objectTag == "Body")
+        {
+            RemoveAllManagedObjects();
+        }
+        else
+        {
+            RemoveExistingOfTag(objectTag);
+        }
 
-        // Align Y rotation only
-        Vector3 currentRot = currentBuilding.transform.eulerAngles;
-        float targetY = spawnPoint.transform.eulerAngles.y;
-
-        currentBuilding.transform.rotation = Quaternion.Euler(
-            currentRot.x,
-            targetY,
-            currentRot.z
+        // Instantiate and position object
+        GameObject placed = Instantiate(prefab);
+        placed.transform.position = spawnPoint.transform.position;
+        placed.transform.rotation = Quaternion.Euler(
+            placed.transform.eulerAngles.x,
+            spawnPoint.transform.eulerAngles.y,
+            placed.transform.eulerAngles.z
         );
 
-        if (debugMode)
-            Debug.Log("Snapped building: " + currentBuilding.name + " to " + spawnPoint.name);
-
-        FinalizePlacement();
-    }
-
-    void FinalizePlacement()
-    {
-        RemoveExistingOfSameTag(currentBuilding.tag);
-
         // Ensure collider exists
-        if (currentBuilding.GetComponent<Collider>() == null)
-            currentBuilding.AddComponent<BoxCollider>();
+        if (placed.GetComponent<Collider>() == null)
+            placed.AddComponent<BoxCollider>();
 
         // Parent to container if assigned
         if (buildingContainer != null)
-            currentBuilding.transform.SetParent(buildingContainer, true);
+            placed.transform.SetParent(buildingContainer, true);
 
         if (debugMode)
-            Debug.Log("Finalized placement: " + currentBuilding.name);
-
-        currentBuilding = null;
-        isMoving = false;
+            Debug.Log($"Placed '{placed.name}' at '{spawnPoint.name}'.");
     }
 
-    public void StartPlacing(GameObject prefab)
+    // Removes all objects defined in spawn rules
+    private void RemoveAllManagedObjects()
     {
-        if (currentBuilding != null)
-            Destroy(currentBuilding);
-
-        currentBuilding = Instantiate(prefab);
-
-        // Ignore raycasts while placing
-        currentBuilding.layer = LayerMask.NameToLayer("Ignore Raycast");
-
-        isMoving = true;
-
-        // Ensure collider exists for placement logic
-        if (currentBuilding.GetComponent<Collider>() == null)
-            currentBuilding.AddComponent<BoxCollider>();
-
-        if (debugMode)
-            Debug.Log("Started placing: " + prefab.name);
-    }
-
-    void RemoveExistingOfSameTag(string tag)
-    {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag(tag);
-
-        GameObject oldest = null;
-        float oldestTime = float.MaxValue;
-
-        foreach (GameObject obj in objs)
+        foreach (TagSpawnRule rule in spawnRules)
         {
-            if (obj == currentBuilding) continue;
-
-            // Use instance ID as a rough "age" proxy
-            int id = obj.GetInstanceID();
-
-            if (oldest == null || id < oldestTime)
+            GameObject[] objs = GameObject.FindGameObjectsWithTag(rule.objectTag);
+            foreach (GameObject obj in objs)
             {
-                oldest = obj;
-                oldestTime = id;
+                if (debugMode)
+                    Debug.Log($"Destroying '{obj.name}'.");
+                Destroy(obj);
             }
         }
-
-        if (oldest != null)
-        {
-            if (debugMode)
-                Debug.Log("Destroying older object: " + oldest.name);
-
-            Destroy(oldest);
-        }
     }
 
+    // Ensures only one object per tag exists
+    private void RemoveExistingOfTag(string tag)
+    {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag(tag);
+        if (objs.Length == 0) return;
+
+        GameObject oldest = objs[0];
+        foreach (GameObject obj in objs)
+        {
+            if (obj.GetInstanceID() < oldest.GetInstanceID())
+                oldest = obj;
+        }
+
+        if (debugMode)
+            Debug.Log($"Removing oldest '{oldest.name}'.");
+
+        Destroy(oldest);
+    }
+
+    // Get spawn point tag for object
     private string GetSpawnPointTag(string objectTag)
     {
         foreach (TagSpawnRule rule in spawnRules)
@@ -154,17 +121,18 @@ public class BuildingSystem : MonoBehaviour
         return null;
     }
 
-    private GameObject FindObjectWithTagInChildren(string tag)
+    // Find object in scene by tag (recursive search)
+    private GameObject FindObjectWithTag(string tag)
     {
         foreach (GameObject root in SceneManager.GetActiveScene().GetRootGameObjects())
         {
             GameObject found = FindInChildrenRecursive(root.transform, tag);
-            if (found != null)
-                return found;
+            if (found != null) return found;
         }
         return null;
     }
 
+    // Recursive child search helper
     private GameObject FindInChildrenRecursive(Transform parent, string tag)
     {
         if (parent.CompareTag(tag))
@@ -176,7 +144,6 @@ public class BuildingSystem : MonoBehaviour
             if (found != null)
                 return found;
         }
-
         return null;
     }
 }
