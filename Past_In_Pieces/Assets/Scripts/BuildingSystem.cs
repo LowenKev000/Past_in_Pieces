@@ -116,15 +116,31 @@ public class BuildingSystem : MonoBehaviour
 
     void RemoveExistingOfSameTag(string tag)
     {
-        foreach (GameObject obj in GameObject.FindGameObjectsWithTag(tag))
-        {
-            if (obj != currentBuilding)
-            {
-                if (debugMode)
-                    Debug.Log("Removing existing: " + obj.name);
+        GameObject[] objs = GameObject.FindGameObjectsWithTag(tag);
 
-                Destroy(obj);
+        GameObject oldest = null;
+        float oldestTime = float.MaxValue;
+
+        foreach (GameObject obj in objs)
+        {
+            if (obj == currentBuilding) continue;
+
+            // Use instance ID as a rough "age" proxy
+            int id = obj.GetInstanceID();
+
+            if (oldest == null || id < oldestTime)
+            {
+                oldest = obj;
+                oldestTime = id;
             }
+        }
+
+        if (oldest != null)
+        {
+            if (debugMode)
+                Debug.Log("Destroying older object: " + oldest.name);
+
+            Destroy(oldest);
         }
     }
 

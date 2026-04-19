@@ -8,13 +8,18 @@ TagManager:
   - Body
   - Legs
   - Legs Snap Point
-  - Undefined
   - Arms
   - Arms Snap Point
   - Nose
   - Nose Snap Point
   - Tail
   - Tail Snap Point
+  - Head
+  - Head Snap Point
+  - Eyes
+  - Eyes Snap Point
+  - Antlers
+  - Antlers Snap Point
   layers:
   - Default
   - TransparentFX

@@ -329,7 +329,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1785718464149130776, guid: f4751d95988b3334cb1d9f5b1d632a3d, type: 3}
+          m_ObjectArgument: {fileID: 3775778692850811778, guid: 014577c62b6f36941838f1094e73a665, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3929,7 +3929,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1785718464149130776, guid: f4751d95988b3334cb1d9f5b1d632a3d, type: 3}
+          m_ObjectArgument: {fileID: 1812380697735474944, guid: db0caade964bcd44ea42a3115505a132, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4345,7 +4345,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1789303925448275607, guid: 5906cbb8c65f85d4ca23d687c742ab2b, type: 3}
+          m_ObjectArgument: {fileID: 2166915204266937489, guid: 9c3feaa97af9ed54581cd4be24c79d75, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -6383,7 +6383,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1785718464149130776, guid: f4751d95988b3334cb1d9f5b1d632a3d, type: 3}
+          m_ObjectArgument: {fileID: 7227310450795939106, guid: 4b0fd925f1d605f489a5b897dfb790c1, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -8572,7 +8572,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5949755047024312550, guid: 27031e5a616c76d4cab1da66da150a3b, type: 3}
+          m_ObjectArgument: {fileID: 3520222392364244126, guid: 80961eea3d00cd84ab084cd1c87879f9, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -9537,7 +9537,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1785718464149130776, guid: f4751d95988b3334cb1d9f5b1d632a3d, type: 3}
+          m_ObjectArgument: {fileID: 7789864912517736873, guid: 8425319619b4fa44086351c74ae46f04, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -17100,7 +17100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82d801768aba0d4eab9e5c65a4cbd0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuildingSystem
-  debugMode: 0
+  debugMode: 1
   cam: {fileID: 1847447389}
   buildingContainer: {fileID: 1946908022}
   spawnRules:
@@ -17110,6 +17110,16 @@ MonoBehaviour:
     spawnPointTag: Legs Snap Point
   - objectTag: Nose
     spawnPointTag: Nose Snap Point
+  - objectTag: Head
+    spawnPointTag: Head Snap Point
+  - objectTag: Eyes
+    spawnPointTag: Eyes Snap Point
+  - objectTag: Tail
+    spawnPointTag: Tail Snap Point
+  - objectTag: Antlers
+    spawnPointTag: Antlers Snap Point
+  - objectTag: Snout
+    spawnPointTag: Snout Snap Point
 --- !u!4 &1140176423
 Transform:
   m_ObjectHideFlags: 0
@@ -22902,7 +22912,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1785718464149130776, guid: f4751d95988b3334cb1d9f5b1d632a3d, type: 3}
+          m_ObjectArgument: {fileID: 7474708551412456464, guid: ba9d1a1a68267834caf757f5ad13df31, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -25863,7 +25873,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1925122644061077040, guid: c5101b5774b87b247a4109564dc6237e, type: 3}
+          m_ObjectArgument: {fileID: 5821259224521876519, guid: 5fecdfd46ec541b44a0939c013264b61, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -31607,7 +31617,7 @@ MonoBehaviour:
   debugMode: 0
   lookAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   clickAction: {fileID: 3280008833414572417, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  sensitivity: 0.25
+  sensitivity: 0.5
   lockX: 1
   lockY: 0
   lockZ: 1
