@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 238a1d24991bf3e4ca782dd770d1a6e7, type: 2}
     - target: {fileID: 919132149155446097, guid: 095955c8b3828994ab6be5bd3da0d044, type: 3}
       propertyPath: m_Name
-      value: mooseantlers
+      value: Moose Antlers
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 095955c8b3828994ab6be5bd3da0d044, type: 3}
       propertyPath: m_TagString
@@ -75,5 +75,26 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 095955c8b3828994ab6be5bd3da0d044, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4460044311435096716}
   m_SourcePrefab: {fileID: 100100000, guid: 095955c8b3828994ab6be5bd3da0d044, type: 3}
+--- !u!1 &3520222392364244126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 095955c8b3828994ab6be5bd3da0d044, type: 3}
+  m_PrefabInstance: {fileID: 4331123965187727823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-4460044311435096716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520222392364244126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6274feabbd1304cbf25d4d8bf20f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimalPart
+  animalType: {fileID: 11400000, guid: ada6e4be6613dbc44acf9058890c395f, type: 2}

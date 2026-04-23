@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba339908519810b4d8221c128a897369, type: 3}
+  m_Name: Seal
+  m_EditorClassIdentifier: Assembly-CSharp::AnimalData
+  animalName: Seal
+  icon: {fileID: 0}
+  hints:
+  - Coastal archaeological sites show early humans hunting this marine mammal for
+    oil, skin, and meat.
+  - Its bones are frequently found in ancient shell middens along Arctic and sub-Arctic
+    shorelines.
+  - Historical carvings from sea cultures often depict this animal as a symbol of
+    survival by the sea.

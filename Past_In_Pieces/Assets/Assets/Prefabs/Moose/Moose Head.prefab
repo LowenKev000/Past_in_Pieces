@@ -116,7 +116,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0a5200e0d8b54ae45905c52259e7cf6b, type: 2}
     - target: {fileID: 919132149155446097, guid: 97aee58d85d7e9a41bd9a47be72d7978, type: 3}
       propertyPath: m_Name
-      value: moosehead
+      value: Moose Head
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 97aee58d85d7e9a41bd9a47be72d7978, type: 3}
       propertyPath: m_TagString
@@ -131,10 +131,31 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 97aee58d85d7e9a41bd9a47be72d7978, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1256125127404755151}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 97aee58d85d7e9a41bd9a47be72d7978, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4762767920594551355}
   m_SourcePrefab: {fileID: 100100000, guid: 97aee58d85d7e9a41bd9a47be72d7978, type: 3}
 --- !u!4 &1538468870464542251 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 97aee58d85d7e9a41bd9a47be72d7978, type: 3}
   m_PrefabInstance: {fileID: 1356432534769267136}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2166915204266937489 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 97aee58d85d7e9a41bd9a47be72d7978, type: 3}
+  m_PrefabInstance: {fileID: 1356432534769267136}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4762767920594551355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2166915204266937489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6274feabbd1304cbf25d4d8bf20f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimalPart
+  animalType: {fileID: 11400000, guid: ada6e4be6613dbc44acf9058890c395f, type: 2}
