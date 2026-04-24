@@ -5,11 +5,18 @@ using System.Collections.Generic;
 
 public class AnimalClassificationSystem : MonoBehaviour
 {
+    [System.Serializable]
+    public class AnimalSetup
+    {
+        public AnimalData animal;
+        public int requiredParts;
+    }
+
     [Header("Animal Setup")]
-    public List<AnimalData> animals = new List<AnimalData>();
+    public List<AnimalSetup> animals = new List<AnimalSetup>();
 
     [Header("Current Animal (ONLY VARIABLE)")]
-    public AnimalData currentAnimal;
+    public AnimalSetup currentAnimal;
 
     [Header("Scene Object To Evaluate")]
     public GameObject targetObject;
@@ -19,15 +26,13 @@ public class AnimalClassificationSystem : MonoBehaviour
     public GameObject resultCanvas;
     public TextMeshProUGUI resultText;
 
-    private int score = 0;
-
     void Start()
     {
+        // Hide result UI at start
         if (resultCanvas != null)
             resultCanvas.SetActive(false);
 
         PickRandomAnimal();
-        UpdateScoreUI();
     }
 
     public void PickRandomAnimal()
@@ -46,50 +51,68 @@ public class AnimalClassificationSystem : MonoBehaviour
         if (resultCanvas != null)
             resultCanvas.SetActive(true);
 
-        float accuracy = GetMatchAccuracy(targetObject);
+        // Get all placed parts in the scene
+        AnimalPart[] parts = targetObject.GetComponentsInChildren<AnimalPart>();
 
-        int gainedScore = Mathf.RoundToInt(accuracy);
-
-        score += gainedScore;
-
-        ShowResult($"Accuracy: {accuracy:0}% (+{gainedScore})");
-
-        UpdateScoreUI();
-    }
-
-    public float GetMatchAccuracy(GameObject parentObject)
-    {
-        AnimalPart[] parts = parentObject.GetComponentsInChildren<AnimalPart>();
-
-        int total = 0;
         int matches = 0;
+        int totalPlaced = parts.Length;
 
         foreach (AnimalPart part in parts)
         {
-            total++;
-
-            if (part.animalType == currentAnimal)
+            if (part.animalType == currentAnimal.animal)
             {
                 matches++;
             }
         }
 
-        if (total == 0)
-            return 0f;
+        int required = currentAnimal.requiredParts;
 
-        return (float)matches / total * 100f;
+        int wrong = totalPlaced - matches;
+        int missing = Mathf.Max(0, required - matches);
+
+        float accuracy = 0f;
+
+        if (required > 0)
+        {
+            accuracy = ((float)(matches - wrong) / required) * 100f;
+        }
+
+        accuracy = Mathf.Clamp(accuracy, 0f, 100f);
+
+        // Score is directly based on accuracy
+        UpdateScoreUI(accuracy);
+
+        string message = "";
+
+        message += $"{matches} right - {wrong} wrong\n\n";
+
+        message += $"{matches} correct parts\n";
+        message += $"{wrong} wrong parts\n";
+        message += $"{required} required parts\n";
+
+        if (missing > 0)
+        {
+            message += $"Missing Parts: {missing}\n";
+        }
+
+        if (matches == required && wrong == 0)
+        {
+            message += "\nPerfect! All parts are correct.";
+        }
+
+        ShowResult(message);
+    }
+
+    void UpdateScoreUI(float accuracy)
+    {
+        if (scoreText != null)
+            scoreText.text = $"Accuracy: {accuracy:0}%";
     }
 
     void ShowResult(string message)
     {
         if (resultText != null)
             resultText.text = message;
-    }
-
-    void UpdateScoreUI()
-    {
-        if (scoreText != null)
-            scoreText.text = "Score: " + score;
     }
 
     public void Retry()

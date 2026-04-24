@@ -17,10 +17,10 @@ public class HintSystem : MonoBehaviour
 
     public void ShowNextHint()
     {
-        if (classificationSystem == null)
+        if (classificationSystem == null || classificationSystem.currentAnimal == null)
             return;
 
-        AnimalData animal = classificationSystem.currentAnimal;
+        AnimalData animal = classificationSystem.currentAnimal.animal;
 
         if (animal == null || animal.hints == null || animal.hints.Count == 0)
             return;

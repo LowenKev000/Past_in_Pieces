@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
+  m_Color: {r: 0.6627451, g: 0.54509807, b: 0.4627451, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -515,8 +515,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4291421427
+  m_fontColor: {r: 0.9529412, g: 0.89411765, b: 0.7882353, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1291,7 +1291,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 4747081649227217376, guid: cb6dfa9a969166e4d92d7927905e8863, type: 3}
+          m_ObjectArgument: {fileID: 3551505470590735625, guid: cb6dfa9a969166e4d92d7927905e8863, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1790,10 +1790,10 @@ RectTransform:
   - {fileID: 398016553}
   m_Father: {fileID: 1037429519}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 84.505, y: -20}
+  m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &91636056
 MonoBehaviour:
@@ -1844,7 +1844,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5821259224521876519, guid: 5fecdfd46ec541b44a0939c013264b61, type: 3}
+          m_ObjectArgument: {fileID: 144225820016627748, guid: 5fecdfd46ec541b44a0939c013264b61, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2907,7 +2907,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 62.004997, y: -20}
+  m_AnchoredPosition: {x: 129.505, y: -20}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &133053893
@@ -2959,7 +2959,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 7227310450795939106, guid: 4b0fd925f1d605f489a5b897dfb790c1, type: 3}
+          m_ObjectArgument: {fileID: 9056760694186832483, guid: 4b0fd925f1d605f489a5b897dfb790c1, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -9027,7 +9027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6509804, g: 0.6509804, b: 0.6509804, a: 1}
+  m_Color: {r: 0.6627451, g: 0.54509807, b: 0.4627451, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11699,7 +11699,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000078082085, y: -0.6384506}
+  m_AnchoredPosition: {x: 0.00002414, y: -0.6384506}
   m_SizeDelta: {x: 44.918, y: 189.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &596763032
@@ -11715,7 +11715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7176471, g: 0.7176471, b: 0.7176471, a: 1}
+  m_Color: {r: 0.7490196, g: 0.63529414, b: 0.54901963, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12718,7 +12718,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 286337749924412312, guid: 014577c62b6f36941838f1094e73a665, type: 3}
+          m_ObjectArgument: {fileID: 2203773884087093787, guid: 8916d9107ae4463469d01d358706d09c, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -12797,10 +12797,10 @@ RectTransform:
   - {fileID: 202448643}
   m_Father: {fileID: 1037429519}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 39.504997, y: -20}
+  m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &634950214
 MonoBehaviour:
@@ -12851,7 +12851,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 4025653835937774950, guid: 7a63f564709f5d040be87cf560b38e46, type: 3}
+          m_ObjectArgument: {fileID: 7826643401941506975, guid: 7a63f564709f5d040be87cf560b38e46, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -13344,7 +13344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  m_Color: {r: 0.6627451, g: 0.54509807, b: 0.4627451, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13988,8 +13988,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4291421427
+  m_fontColor: {r: 0.9529412, g: 0.89411765, b: 0.7882353, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -14882,7 +14882,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 7474708551412456464, guid: ba9d1a1a68267834caf757f5ad13df31, type: 3}
+          m_ObjectArgument: {fileID: 4519245876508259678, guid: ba9d1a1a68267834caf757f5ad13df31, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -15109,7 +15109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  m_Color: {r: 0.6627451, g: 0.54509807, b: 0.4627451, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -21397,7 +21397,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.0000038146973, y: -162.5}
-  m_SizeDelta: {x: 30, y: 30}
+  m_SizeDelta: {x: 40, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1034832402
 MonoBehaviour:
@@ -21475,8 +21475,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: feeafdc7207e28f45a09f6a0470c0bfa, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -21510,7 +21510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1037429519
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21558,7 +21558,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.49401093, y: -12.5}
-  m_SizeDelta: {x: 169.01, y: 0}
+  m_SizeDelta: {x: 169.01, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1037429520
 MonoBehaviour:
@@ -21780,7 +21780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  m_Color: {r: 0.6627451, g: 0.54509807, b: 0.4627451, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -23260,7 +23260,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 107.005, y: -20}
+  m_AnchoredPosition: {x: 39.504997, y: -20}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1115963398
@@ -23312,7 +23312,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6684949017242523144, guid: e5166deec63a17541994c64d0274e218, type: 3}
+          m_ObjectArgument: {fileID: 6152909309212565946, guid: e5166deec63a17541994c64d0274e218, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -23445,7 +23445,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2166915204266937489, guid: 9c3feaa97af9ed54581cd4be24c79d75, type: 3}
+          m_ObjectArgument: {fileID: 7161272201043465136, guid: 9c3feaa97af9ed54581cd4be24c79d75, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -24978,12 +24978,12 @@ GameObject:
   - component: {fileID: 1253028123}
   - component: {fileID: 1253028122}
   m_Layer: 5
-  m_Name: Background Image (2)
+  m_Name: Moose Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1253028121
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25001,8 +25001,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 180.56085, y: -30}
-  m_SizeDelta: {x: 60, y: 60}
+  m_AnchoredPosition: {x: 84.505, y: -20}
+  m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1253028122
 MonoBehaviour:
@@ -25053,7 +25053,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 6839044663413863445, guid: 26d5bdbee7e239e4e99a437207ea49ad, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -27308,8 +27308,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4291421427
+  m_fontColor: {r: 0.9529412, g: 0.89411765, b: 0.7882353, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -28128,7 +28128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7490196, g: 0.63529414, b: 0.54901963, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -28468,7 +28468,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  m_Color: {r: 0.6627451, g: 0.54509807, b: 0.4627451, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -29679,7 +29679,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 3520222392364244126, guid: 80961eea3d00cd84ab084cd1c87879f9, type: 3}
+          m_ObjectArgument: {fileID: 1546242342060249960, guid: 80961eea3d00cd84ab084cd1c87879f9, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -31477,10 +31477,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimalClassificationSystem
   animals:
-  - {fileID: 11400000, guid: f6afc7bd37d3e03498cafa791b796b5b, type: 2}
-  - {fileID: 11400000, guid: ada6e4be6613dbc44acf9058890c395f, type: 2}
-  - {fileID: 11400000, guid: 682e928fa8c1c3b41846909e49e9f608, type: 2}
-  currentAnimal: {fileID: 0}
+  - animal: {fileID: 11400000, guid: f6afc7bd37d3e03498cafa791b796b5b, type: 2}
+    requiredParts: 5
+  - animal: {fileID: 11400000, guid: ada6e4be6613dbc44acf9058890c395f, type: 2}
+    requiredParts: 5
+  - animal: {fileID: 11400000, guid: 682e928fa8c1c3b41846909e49e9f608, type: 2}
+    requiredParts: 4
+  currentAnimal:
+    animal: {fileID: 0}
+    requiredParts: 0
   targetObject: {fileID: 1946908020}
   scoreText: {fileID: 824513879}
   resultCanvas: {fileID: 61518673}
@@ -31993,10 +31998,10 @@ RectTransform:
   - {fileID: 18589686}
   m_Father: {fileID: 1037429519}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 129.505, y: -20}
+  m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1613778722
 MonoBehaviour:
@@ -32047,7 +32052,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1812380697735474944, guid: db0caade964bcd44ea42a3115505a132, type: 3}
+          m_ObjectArgument: {fileID: 8384011552482575560, guid: db0caade964bcd44ea42a3115505a132, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -33898,7 +33903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7490196, g: 0.63529414, b: 0.54901963, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -35025,8 +35030,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: feeafdc7207e28f45a09f6a0470c0bfa, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -35308,7 +35313,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 7106750109032899846, guid: 23c8d20fa1df5a84d8a806f2e424d20f, type: 3}
+          m_ObjectArgument: {fileID: 701736466342242712, guid: 23c8d20fa1df5a84d8a806f2e424d20f, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -35975,7 +35980,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 7789864912517736873, guid: 8425319619b4fa44086351c74ae46f04, type: 3}
+          m_ObjectArgument: {fileID: 6203782781442507215, guid: 8425319619b4fa44086351c74ae46f04, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -36659,7 +36664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  m_Color: {r: 0.6627451, g: 0.54509807, b: 0.4627451, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -38845,9 +38850,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 133053892}
   - {fileID: 1115963397}
   - {fileID: 1253028121}
+  - {fileID: 133053892}
   - {fileID: 726664590}
   - {fileID: 1757171696}
   - {fileID: 853914881}
@@ -40885,7 +40890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.15723258, g: 0.15723258, b: 0.15723258, a: 1}
+  m_Color: {r: 0.6627451, g: 0.54509807, b: 0.4627451, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -41997,7 +42002,7 @@ MonoBehaviour:
         m_MethodName: StartPlacing
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5722792330313096761, guid: 38988fee97bc5074da79198c56cd73cd, type: 3}
+          m_ObjectArgument: {fileID: 8279062871935049192, guid: 38988fee97bc5074da79198c56cd73cd, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -42649,63 +42654,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146228155}
   m_CullTransparentMesh: 1
---- !u!1001 &6791763805766550212
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4025653835937774950, guid: deefcfc97b9e20a4d975f5fa162ff7fa, type: 3}
-      propertyPath: m_Name
-      value: Eagle Completed
-      objectReference: {fileID: 0}
-    - target: {fileID: 4365727986636433372, guid: deefcfc97b9e20a4d975f5fa162ff7fa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -211.08556
-      objectReference: {fileID: 0}
-    - target: {fileID: 4365727986636433372, guid: deefcfc97b9e20a4d975f5fa162ff7fa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.236
-      objectReference: {fileID: 0}
-    - target: {fileID: 4365727986636433372, guid: deefcfc97b9e20a4d975f5fa162ff7fa, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.32414
-      objectReference: {fileID: 0}
-    - target: {fileID: 4365727986636433372, guid: deefcfc97b9e20a4d975f5fa162ff7fa, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: 4365727986636433372, guid: deefcfc97b9e20a4d975f5fa162ff7fa, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071069
-      objectReference: {fileID: 0}
-    - target: {fileID: 4365727986636433372, guid: deefcfc97b9e20a4d975f5fa162ff7fa, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4365727986636433372, guid: deefcfc97b9e20a4d975f5fa162ff7fa, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4365727986636433372, guid: deefcfc97b9e20a4d975f5fa162ff7fa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4365727986636433372, guid: deefcfc97b9e20a4d975f5fa162ff7fa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4365727986636433372, guid: deefcfc97b9e20a4d975f5fa162ff7fa, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: deefcfc97b9e20a4d975f5fa162ff7fa, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -42720,4 +42668,3 @@ SceneRoots:
   - {fileID: 1946908022}
   - {fileID: 1851679720}
   - {fileID: 300909757}
-  - {fileID: 6791763805766550212}
