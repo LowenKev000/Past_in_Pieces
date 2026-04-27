@@ -23,12 +23,15 @@ public class BuildingSystem : MonoBehaviour
     [Header("Placement Rules")]
     public List<TagSpawnRule> spawnRules = new List<TagSpawnRule>();
 
-    // Entry point for placing objects
+    // =========================
+    // PLACE OBJECT
+    // =========================
     public void StartPlacing(GameObject prefab)
     {
+        if (prefab == null) return;
+
         string objectTag = prefab.tag;
 
-        // Get matching spawn rule
         string spawnPointTag = GetSpawnPointTag(objectTag);
         if (spawnPointTag == null)
         {
@@ -45,7 +48,7 @@ public class BuildingSystem : MonoBehaviour
             return;
         }
 
-        // Special case: "Body" clears all managed objects
+        // Body clears everything
         if (objectTag == "Body")
         {
             RemoveAllManagedObjects();
@@ -55,8 +58,8 @@ public class BuildingSystem : MonoBehaviour
             RemoveExistingOfTag(objectTag);
         }
 
-        // Instantiate and position object
         GameObject placed = Instantiate(prefab);
+
         placed.transform.position = spawnPoint.transform.position;
         placed.transform.rotation = Quaternion.Euler(
             placed.transform.eulerAngles.x,
@@ -64,11 +67,9 @@ public class BuildingSystem : MonoBehaviour
             placed.transform.eulerAngles.z
         );
 
-        // Ensure collider exists
         if (placed.GetComponent<Collider>() == null)
             placed.AddComponent<BoxCollider>();
 
-        // Parent to container if assigned
         if (buildingContainer != null)
             placed.transform.SetParent(buildingContainer, true);
 
@@ -76,28 +77,62 @@ public class BuildingSystem : MonoBehaviour
             Debug.Log($"Placed '{placed.name}' at '{spawnPoint.name}'.");
     }
 
-    // Removes all objects defined in spawn rules
+    // =========================
+    // REMOVE OBJECT (BY PREFAB)
+    // =========================
+    public void RemovePart(GameObject prefab)
+    {
+        if (prefab == null) return;
+
+        string tag = prefab.tag;
+
+        GameObject[] objs = GameObject.FindGameObjectsWithTag(tag);
+
+        if (objs.Length == 0)
+        {
+            if (debugMode)
+                Debug.Log($"No objects found with tag '{tag}' to remove.");
+            return;
+        }
+
+        foreach (GameObject obj in objs)
+        {
+            if (debugMode)
+                Debug.Log($"Removing '{obj.name}'.");
+
+            Destroy(obj);
+        }
+    }
+
+    // =========================
+    // REMOVE ALL
+    // =========================
     private void RemoveAllManagedObjects()
     {
         foreach (TagSpawnRule rule in spawnRules)
         {
             GameObject[] objs = GameObject.FindGameObjectsWithTag(rule.objectTag);
+
             foreach (GameObject obj in objs)
             {
                 if (debugMode)
                     Debug.Log($"Destroying '{obj.name}'.");
+
                 Destroy(obj);
             }
         }
     }
 
-    // Ensures only one object per tag exists
+    // =========================
+    // REMOVE SINGLE TAG
+    // =========================
     private void RemoveExistingOfTag(string tag)
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag(tag);
         if (objs.Length == 0) return;
 
         GameObject oldest = objs[0];
+
         foreach (GameObject obj in objs)
         {
             if (obj.GetInstanceID() < oldest.GetInstanceID())
@@ -110,7 +145,9 @@ public class BuildingSystem : MonoBehaviour
         Destroy(oldest);
     }
 
-    // Get spawn point tag for object
+    // =========================
+    // RULE LOOKUP
+    // =========================
     private string GetSpawnPointTag(string objectTag)
     {
         foreach (TagSpawnRule rule in spawnRules)
@@ -121,7 +158,9 @@ public class BuildingSystem : MonoBehaviour
         return null;
     }
 
-    // Find object in scene by tag (recursive search)
+    // =========================
+    // FIND OBJECT BY TAG
+    // =========================
     private GameObject FindObjectWithTag(string tag)
     {
         foreach (GameObject root in SceneManager.GetActiveScene().GetRootGameObjects())
@@ -132,7 +171,6 @@ public class BuildingSystem : MonoBehaviour
         return null;
     }
 
-    // Recursive child search helper
     private GameObject FindInChildrenRecursive(Transform parent, string tag)
     {
         if (parent.CompareTag(tag))
