@@ -26,13 +26,21 @@ public class HintSystem : MonoBehaviour
     // Keeps track of the currently running typing coroutine so it can be stopped if needed
     private Coroutine typingCoroutine;
 
-    // Index used to cycle through the list of hints
-    private int hintIndex;
+    // Stores the randomly selected hints for THIS round (max 3)
+    private List<string> selectedHints = new List<string>();
+
+    // Index used to cycle through the selected hints
+    private int hintIndex = 0;
 
 
-    // Called (usually by a button) to display the next hint in the list
-    public void ShowNextHint()
+    // Called when a new animal/round starts
+    // This selects up to 3 random hints and keeps them fixed for the round
+    public void PrepareHints()
     {
+        // Clear previous hints and reset index
+        selectedHints.Clear();
+        hintIndex = 0;
+
         // Make sure we have a valid classification system and selected animal
         if (classificationSystem == null || classificationSystem.currentAnimal == null)
             return;
@@ -44,12 +52,52 @@ public class HintSystem : MonoBehaviour
         if (animal == null || animal.hints == null || animal.hints.Count == 0)
             return;
 
+        // Create a copy of the hints list so we don't modify the original
+        List<string> shuffled = new List<string>(animal.hints);
+
+        // Shuffle the list using Fisher-Yates algorithm
+        for (int i = 0; i < shuffled.Count; i++)
+        {
+            int randomIndex = Random.Range(i, shuffled.Count);
+            string temp = shuffled[i];
+            shuffled[i] = shuffled[randomIndex];
+            shuffled[randomIndex] = temp;
+        }
+
+        // Determine how many hints to take (max 3, or fewer if not enough exist)
+        int count = Mathf.Min(3, shuffled.Count);
+
+        // Store the selected hints
+        for (int i = 0; i < count; i++)
+        {
+            selectedHints.Add(shuffled[i]);
+        }
+    }
+
+
+    // Called (usually by a button) to display the next hint
+    public void ShowNextHint()
+    {
+        // Make sure we have a valid classification system and selected animal
+        if (classificationSystem == null || classificationSystem.currentAnimal == null)
+            return;
+
+        // If hints haven't been prepared yet, prepare them now
+        if (selectedHints.Count == 0)
+        {
+            PrepareHints();
+        }
+
+        // If still no hints, exit
+        if (selectedHints.Count == 0)
+            return;
+
         // Loop back to the first hint if we've reached the end
-        if (hintIndex >= animal.hints.Count)
+        if (hintIndex >= selectedHints.Count)
             hintIndex = 0;
 
         // Display the current hint
-        ShowHint(animal.hints[hintIndex]);
+        ShowHint(selectedHints[hintIndex]);
 
         // Move to the next hint for the next button press
         hintIndex++;

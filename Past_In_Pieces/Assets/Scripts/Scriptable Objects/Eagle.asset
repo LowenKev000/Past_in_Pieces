@@ -15,9 +15,17 @@ MonoBehaviour:
   animalName: Eagle
   icon: {fileID: 0}
   hints:
-  - Remains suggest it held symbolic importance, often associated with power and
-    leadership in early civilizations.
+  - 'Arm guards and gloves show marks spaced in a consistent pattern, showing  repeated
+    controlled contact with this trained, creature.
+
+'
   - Bones and artistic depictions indicate this animal was rarely used for food,
     but held strong symbolic value in early societies.
   - Recovered military objects show a recurring bird motif, suggesting its role as
     a unifying emblem among organized forces.
+  - Remains discovered near altars are accompanied by sun symbols and sky motifs,
+    indicating a connection to divine or celestial beliefs.
+  - A nest site preserved in cliffside contains unusually large eggshell fragments,
+    suggesting the creature favored high, inaccessible terrain.
+  - Fragmented bones appear almost exclusively in elevated or hard-to-reach excavation
+    layers, with little evidence of human handling.
