@@ -156,8 +156,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -48.60177, y: -5.3108}
-  m_SizeDelta: {x: 177.0385, y: 265.4405}
+  m_AnchoredPosition: {x: -48.60177, y: 0.2438}
+  m_SizeDelta: {x: 177.0385, y: 254.3312}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4951556
 MonoBehaviour:
@@ -8024,7 +8024,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 109.30002, y: 78.6}
+  m_AnchoredPosition: {x: 109.30002, y: 94.37399}
   m_SizeDelta: {x: 214.311, y: 126.9709}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &701811228
@@ -12093,7 +12093,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15.7138, y: -159.09622}
+  m_AnchoredPosition: {x: 15.7138, y: -152.4}
   m_SizeDelta: {x: 31.1022, y: 28.7463}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1034832402
@@ -21327,7 +21327,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 158.19997, y: -119.57399}
+  m_AnchoredPosition: {x: 158.19997, y: -103.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1791058983
@@ -21636,7 +21636,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -66.395905, y: -159.09624}
+  m_AnchoredPosition: {x: -66.395905, y: -152.4}
   m_SizeDelta: {x: 99.5269, y: 28.7463}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1794547485
@@ -24562,7 +24562,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 227.4, y: -76.5}
+  m_AnchoredPosition: {x: 227.4, y: -60.726017}
   m_SizeDelta: {x: 44.918, y: 188.3731}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2032804986
